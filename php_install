@@ -1,0 +1,13 @@
+#!/bin/bash
+
+php=$(dpkg-query -W -f='${Status}' php7.0 2>/dev/null | grep -c "ok install")
+if [ $php -eq 0 ];
+then
+	echo "php installimine"
+	sudo apt install php7.0 -y;
+elif [ $php -eq 1 ];
+then
+	echo "php on installitud"
+	php -v
+
+fi
