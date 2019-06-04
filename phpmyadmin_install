@@ -1,0 +1,15 @@
+#!/bin/bash
+
+phpmyadmin=$(dpkg-query -W -f='${Status}' phpmyadmin 2>/dev/null | grep -c "ok install")
+if [ $phpmyadmin -eq 0 ];
+then
+	echo "phpmyadmin installimine"
+	sudo apt install phpmyadmin php-mbstring php-gettext -y;
+	sudo phpenmod mcrypt;
+	sudo phpenmod mbstring
+elif [ $phpmyadmin -eq 1 ];
+then
+	echo "phpmyadmin on installitud"
+	service apache2 status
+
+fi
