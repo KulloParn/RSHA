@@ -1,0 +1,13 @@
+#!/bin/bash
+
+mysql=$(dpkg-query -W -f='${Status}' mysql-server-5.7 2>/dev/null | grep -c "ok install")
+if [ $mysql -eq 0 ];
+then
+	echo "mysql installimine"
+	apt install mysql-server-5.7 -y;
+elif [ $mysql -eq 1 ];
+then
+	echo "mysql on installitud"
+	mysql -v
+
+fi
